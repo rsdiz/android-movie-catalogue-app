@@ -2,43 +2,13 @@ package id.rosyid.moviecatalogue.utils
 
 import id.rosyid.moviecatalogue.R
 import id.rosyid.moviecatalogue.data.*
+import id.rosyid.moviecatalogue.utils.DataBuilder.buildCredits
+import id.rosyid.moviecatalogue.utils.DataBuilder.buildGenres
+import id.rosyid.moviecatalogue.utils.DataBuilder.buildKeywords
+import id.rosyid.moviecatalogue.utils.DataBuilder.buildSocialLink
 import java.time.LocalDate
 
 object MoviesData {
-    private fun buildGenres(vararg name: String): List<GenreEntity> {
-        val listGenre: MutableList<GenreEntity> = mutableListOf()
-        name.forEach {
-            listGenre.add(GenreEntity(it))
-        }
-        return listGenre
-    }
-
-    private fun buildKeywords(vararg name: String): List<KeywordEntity> {
-        val listKeyword: MutableList<KeywordEntity> = mutableListOf()
-        name.forEach {
-            listKeyword.add(KeywordEntity(it))
-        }
-        return listKeyword
-    }
-
-    private fun buildCredits(vararg credits: Array<String>): List<CreditEntity> {
-        val listCredits: MutableList<CreditEntity> = mutableListOf()
-        credits.forEach { credit ->
-            val creditEntity = CreditEntity(credit[0], credit[1])
-            listCredits.add(creditEntity)
-        }
-        return listCredits
-    }
-
-    private fun buildSocialLink(vararg socialLinks: Array<*>): List<SocialLinkEntity> {
-        val listSocialLink: MutableList<SocialLinkEntity> = mutableListOf()
-        socialLinks.forEach {
-            val creditEntity = SocialLinkEntity(it[0] as TypeSocialLink, it[1] as String)
-            listSocialLink.add(creditEntity)
-        }
-        return listSocialLink
-    }
-
     fun generateMovies(): List<MovieEntity> {
         return mutableListOf(
             MovieEntity(
