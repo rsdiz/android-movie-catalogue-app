@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import id.rosyid.moviecatalogue.databinding.ActivitySplashBinding
+import id.rosyid.moviecatalogue.ui.homepage.HomepageActivity
 import id.rosyid.moviecatalogue.utils.Fullscreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -19,7 +20,6 @@ class SplashActivity : AppCompatActivity() {
         viewBinding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        // TODO: Create Homepage Activity
         val intentHomepage = Intent(this, HomepageActivity::class.java)
         lifecycleScope.launch(Dispatchers.IO) {
             delay(TIMEOUT)
