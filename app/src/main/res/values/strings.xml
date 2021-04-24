@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Movie Catalogue</string>
+    <string name="movies">Movies</string>
+    <string name="tv_shows">TV Shows</string>
+    <string name="title">Title</string>
+    <string name="release_date">Release Date</string>
+    <string name="overview">Overview</string>
+    <string name="credits_name">Name (Credits)</string>
+    <string name="credits_role">Role (Credits)</string>
+    <string name="user_score">User Score</string>
+    <string name="status">Status</string>
+    <string name="type">Type</string>
+    <string name="original_language">Original Language</string>
+    <string name="duration">Duration</string>
+    <string name="visit_facebook">Visit Facebook</string>
+    <string name="visit_twitter">Visit Twitter</string>
+    <string name="visit_instagram">Visit Instagram</string>
+    <string name="visit_justwatch">Visit JustWatch</string>
+    <string name="visit_homepage">Visit Homepage</string>
+    <string name="keywords">Keywords</string>
+    <string name="settings">Settings</string>
+    <string name="genre_name">Genre Name</string>
 </resources>

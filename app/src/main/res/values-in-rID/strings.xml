@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Katalog Film</string>
+    <string name="movies">Film</string>
+    <string name="tv_shows">Acara TV</string>
+    <string name="title">Judul</string>
+    <string name="release_date">Tanggal Rilis</string>
+    <string name="overview">Gambaran</string>
+    <string name="credits_name">Nama (Credits)</string>
+    <string name="credits_role">Peran (Credits)</string>
+    <string name="user_score">Skor Pengguna</string>
+    <string name="status">Status</string>
+    <string name="type">Tipe</string>
+    <string name="original_language">Bahasa Asli</string>
+    <string name="duration">Durasi</string>
+    <string name="visit_facebook">Kunjungi Facebook</string>
+    <string name="visit_twitter">Kunjungi Twitter</string>
+    <string name="visit_instagram">Kunjungi Instagram</string>
+    <string name="visit_justwatch">Kunjungi JustWatch</string>
+    <string name="visit_homepage">Kunjungi Laman Web</string>
+    <string name="keywords">Kata Kunci</string>
+    <string name="settings">Pengaturan</string>
+    <string name="genre_name">Nama Aliran</string>
+</resources>

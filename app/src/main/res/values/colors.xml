@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="cod_gray">#FF1B1717</color>
+    <color name="maroon">#FF810000</color>
+    <color name="thunderbird">#FFCE1212</color>
+    <color name="white_rock">#FFEEEBDD</color>
+    <color name="placeholder">#6FB6B6B6</color>
 </resources>
