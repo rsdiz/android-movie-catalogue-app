@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_movie_folder_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieCatalogue">
-        <activity android:name=".ui.homepage.HomepageActivity"></activity>
+        <activity android:name=".ui.homepage.HomepageActivity" />
         <activity
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/Theme.MovieCatalogue.NoActionBar">

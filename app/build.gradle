@@ -47,9 +47,11 @@ dependencies {
     // architecture component
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${androidLifecycleVersion}"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${androidLifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${androidLifecycleVersion}"
     // kotlin coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinxCoroutinesVersion}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinxCoroutinesVersion}"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     // testing
     testImplementation "junit:junit:${junitTestVersion}"
     androidTestImplementation "androidx.test.ext:junit:${junitAndroidTestVersion}"
