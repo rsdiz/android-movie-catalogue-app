@@ -47,53 +47,54 @@
             android:id="@+id/rb_user_score"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
             android:max="10"
             android:numStars="5"
             android:rating="2"
             android:stepSize="0.1"
-            android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/iv_poster"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            android:layout_margin="@dimen/margin_padding_size_small" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
         <TextView
             android:id="@+id/tv_user_score_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/user_score"
+            android:layout_marginStart="@dimen/margin_padding_size_small"
             android:fontFamily="@font/lato"
             android:textSize="@dimen/text_size_micro"
-            app:layout_constraintStart_toEndOf="@+id/rb_user_score"
-            android:layout_marginStart="@dimen/margin_padding_size_small"
             app:layout_constraintBottom_toBottomOf="@+id/rb_user_score"
-            app:layout_constraintTop_toTopOf="@+id/rb_user_score" />
+            app:layout_constraintStart_toEndOf="@+id/rb_user_score"
+            app:layout_constraintTop_toTopOf="@+id/rb_user_score"
+            tools:text="@string/user_score" />
 
         <TextView
             android:id="@+id/tv_release_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
             android:layout_margin="@dimen/margin_padding_size_small"
+            android:fontFamily="@font/lato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_poster"
             app:layout_constraintTop_toBottomOf="@+id/rb_user_score"
             tools:text="@string/release_date" />
 
         <TextView
+            android:id="@+id/tv_overview"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="@dimen/margin_padding_size_small"
-            android:maxLines="3"
             android:ellipsize="end"
             android:fontFamily="@font/lato"
-            tools:text="@string/overview"
+            android:maxLines="3"
             android:textAlignment="viewStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/iv_poster"
             app:layout_constraintTop_toBottomOf="@+id/tv_release_date"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@string/overview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

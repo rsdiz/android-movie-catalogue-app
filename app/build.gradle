@@ -51,7 +51,9 @@ dependencies {
     // kotlin coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinxCoroutinesVersion}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinxCoroutinesVersion}"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.legacy:legacy-support-v4:${legacySupportV4Version}"
+    // Image caching
+    implementation "com.github.bumptech.glide:glide:${glideVersion}"
     // testing
     testImplementation "junit:junit:${junitTestVersion}"
     androidTestImplementation "androidx.test.ext:junit:${junitAndroidTestVersion}"
