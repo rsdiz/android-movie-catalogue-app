@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.rosyid.moviecatalogue.adapter.TvAdapter
 import id.rosyid.moviecatalogue.databinding.FragmentTvSeriesBinding
 import id.rosyid.moviecatalogue.ui.detail.DetailActivity
 import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
-import id.rosyid.moviecatalogue.utils.TvSeriesData
 import id.rosyid.moviecatalogue.utils.autoCleared
 
 class TvSeriesFragment : Fragment(), ItemsCallback {
@@ -29,7 +29,12 @@ class TvSeriesFragment : Fragment(), ItemsCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
-            val tvSeries = TvSeriesData.generateTvSeries()
+            val viewModel = ViewModelProvider(
+                this,
+                ViewModelProvider.NewInstanceFactory()
+            )[TvSeriesViewModel::class.java]
+            val tvSeries = viewModel.getTvSeries()
+
             val tvAdapter = TvAdapter(this)
             tvAdapter.setTvSeries(tvSeries)
 

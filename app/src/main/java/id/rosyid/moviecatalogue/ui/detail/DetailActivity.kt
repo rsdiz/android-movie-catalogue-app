@@ -3,10 +3,10 @@ package id.rosyid.moviecatalogue.ui.detail
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TableRow
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -21,8 +21,6 @@ import id.rosyid.moviecatalogue.data.MovieEntity
 import id.rosyid.moviecatalogue.data.TvEntity
 import id.rosyid.moviecatalogue.databinding.ActivityDetailBinding
 import id.rosyid.moviecatalogue.utils.FormatPattern
-import id.rosyid.moviecatalogue.utils.MoviesData
-import id.rosyid.moviecatalogue.utils.TvSeriesData
 import id.rosyid.moviecatalogue.utils.toStringWithPattern
 
 class DetailActivity : AppCompatActivity() {
@@ -33,14 +31,18 @@ class DetailActivity : AppCompatActivity() {
         viewBinding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        val viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[DetailViewModel::class.java]
+
         val extras = intent.extras
         if (extras != null) {
             val id = extras.getInt(EXTRA_DATA, -1)
             val type = extras.getString(EXTRA_TYPE, "")
             if (id != -1 && !type.isNullOrEmpty()) {
-                val data: BaseEntity =
-                    if (type == TYPE_MOVIES) MoviesData.getMovie(id)
-                    else TvSeriesData.getTvSeries(id)
+                viewModel.setSelectedId(id, type)
+                val data: BaseEntity = viewModel.getItemDetail()
                 populateData(data, type)
             }
         }

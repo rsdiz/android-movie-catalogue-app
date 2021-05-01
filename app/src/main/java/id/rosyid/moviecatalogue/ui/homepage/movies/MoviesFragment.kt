@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.rosyid.moviecatalogue.adapter.MovieAdapter
 import id.rosyid.moviecatalogue.databinding.FragmentMoviesBinding
 import id.rosyid.moviecatalogue.ui.detail.DetailActivity
 import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
-import id.rosyid.moviecatalogue.utils.MoviesData
 import id.rosyid.moviecatalogue.utils.autoCleared
 
 class MoviesFragment : Fragment(), ItemsCallback {
@@ -29,7 +29,12 @@ class MoviesFragment : Fragment(), ItemsCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
-            val movies = MoviesData.generateMovies()
+            val viewModel = ViewModelProvider(
+                this,
+                ViewModelProvider.NewInstanceFactory()
+            )[MoviesViewModel::class.java]
+            val movies = viewModel.getMovies()
+
             val movieAdapter = MovieAdapter(this)
             movieAdapter.setMovies(movies)
 
