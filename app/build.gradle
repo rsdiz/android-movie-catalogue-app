@@ -44,6 +44,8 @@ dependencies {
     implementation "com.google.android.material:material:${materialVersion}"
     implementation "androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}"
     implementation "androidx.recyclerview:recyclerview:${recyclerviewVersion}"
+    implementation "com.xiaofeng.android:flowlayoutmanager:${flowlayoutmanagerVersion}"
+    implementation "androidx.palette:palette-ktx:${palleteVersion}"
     // architecture component
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${androidLifecycleVersion}"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${androidLifecycleVersion}"

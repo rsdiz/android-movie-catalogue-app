@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/banner_color"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/image_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/white_rock" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/content_poster"
+            android:layout_width="150dp"
+            android:layout_height="225dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/margin_padding_size_medium"
+            android:layout_marginTop="86dp"
+            android:elevation="@dimen/margin_padding_size_medium"
+            android:src="@color/cod_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/rating_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/rating_placeholder"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/content_poster"
+            app:layout_constraintEnd_toEndOf="@+id/content_poster"
+            app:layout_constraintStart_toStartOf="@+id/content_poster"
+            tools:viewBindingIgnore="true">
+
+            <RatingBar
+                android:id="@+id/content_rb_user_score"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_size_small"
+                android:max="10"
+                android:numStars="5"
+                android:rating="2"
+                android:stepSize="0.1" />
+
+            <TextView
+                android:id="@+id/content_number_user_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_padding_size_small"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato"
+                android:maxLines="1"
+                android:textColor="?attr/colorOnPrimary"
+                android:textSize="@dimen/text_size_micro"
+                tools:text="@string/user_score" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/content_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_padding_size_small"
+            android:fontFamily="@font/crimson_text_bold"
+            android:gravity="start"
+            android:maxLines="2"
+            android:textColor="@color/cod_gray"
+            android:textSize="@dimen/text_size_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/content_poster"
+            app:layout_constraintTop_toTopOf="@+id/content_poster"
+            tools:text="@string/title" />
+
+        <TextView
+            android:id="@+id/content_release_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:fontFamily="@font/lato"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/content_poster"
+            app:layout_constraintTop_toBottomOf="@+id/content_title"
+            tools:text="@string/release_date" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_genre"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="131dp"
+            app:layoutManager="com.xiaofeng.flowlayoutmanager.FlowLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@+id/content_poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/content_poster"
+            app:layout_constraintTop_toBottomOf="@+id/banner_color"
+            app:layout_constraintVertical_bias="0.0"
+            tools:itemCount="6"
+            tools:listitem="@layout/items_text_list" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_social_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_medium"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/content_poster"
+            app:spanCount="5"
+            tools:itemCount="5"
+            tools:listitem="@layout/items_social_link" />
+
+        <TextView
+            android:id="@+id/label_overview"
+            style="@style/TextAppearance.MovieCatalogue.Label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/overview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_social_link"
+            tools:viewBindingIgnore="true" />
+
+        <TextView
+            android:id="@+id/content_overview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_medium"
+            android:fontFamily="@font/lato"
+            android:textAlignment="viewStart"
+            android:textColor="?attr/colorOnBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_overview"
+            tools:text="@string/overview" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:background="@color/placeholder"
+            app:layout_constraintTop_toBottomOf="@+id/content_overview"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <TextView
+            android:id="@+id/label_credits"
+            style="@style/TextAppearance.MovieCatalogue.Label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/credits"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/content_overview"
+            tools:viewBindingIgnore="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_credits"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_medium"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_credits"
+            tools:itemCount="2"
+            tools:listitem="@layout/items_credits" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:background="@color/placeholder"
+            app:layout_constraintTop_toBottomOf="@+id/rv_credits"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <TableLayout
+            android:id="@+id/facts_table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_credits"
+            tools:viewBindingIgnore="true">
+
+            <TableRow android:weightSum="1">
+
+                <TextView
+                    style="@style/TextAppearance.MovieCatalogue.Facts.Label"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/duration" />
+
+                <TextView
+                    android:id="@+id/label_type"
+                    style="@style/TextAppearance.MovieCatalogue.Facts.Label"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/type" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/content_duration"
+                    style="@style/TextAppearance.MovieCatalogue.Facts.Content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/duration" />
+
+                <TextView
+                    android:id="@+id/content_type"
+                    style="@style/TextAppearance.MovieCatalogue.Facts.Content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/type" />
+
+            </TableRow>
+
+            <TableRow android:weightSum="1">
+
+                <TextView
+                    style="@style/TextAppearance.MovieCatalogue.Facts.Label"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/status" />
+
+                <TextView
+                    style="@style/TextAppearance.MovieCatalogue.Facts.Label"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/original_language" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/content_status"
+                    style="@style/TextAppearance.MovieCatalogue.Facts.Content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/status" />
+
+                <TextView
+                    android:id="@+id/content_original_language"
+                    style="@style/TextAppearance.MovieCatalogue.Facts.Content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/original_language" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:background="@color/placeholder"
+            app:layout_constraintTop_toBottomOf="@+id/facts_table"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <TextView
+            android:id="@+id/label_keywords"
+            style="@style/TextAppearance.MovieCatalogue.Label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/keywords"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/facts_table"
+            tools:viewBindingIgnore="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_keywords"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_padding_size_medium"
+            android:minHeight="100dp"
+            app:layoutManager="com.xiaofeng.flowlayoutmanager.FlowLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_keywords"
+            tools:itemCount="5"
+            tools:listitem="@layout/items_text_list" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

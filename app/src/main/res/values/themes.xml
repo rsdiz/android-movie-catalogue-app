@@ -13,9 +13,38 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.MovieCatalogue.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:colorForeground">@color/white</item>
+    </style>
+    <!-- Component Style. -->
+    <style name="TextAppearance.MovieCatalogue" parent="" />
+
+    <style name="TextAppearance.MovieCatalogue.Facts" parent="TextAppearance.AppCompat" />
+
+    <style name="TextAppearance.MovieCatalogue.Facts.Label">
+        <item name="android:padding">@dimen/margin_padding_size_small</item>
+        <item name="android:textColor">?colorSecondary</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:layout_weight">.5</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextAppearance.MovieCatalogue.Facts.Content">
+        <item name="android:padding">@dimen/margin_padding_size_small</item>
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:layout_weight">.5</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextAppearance.MovieCatalogue.Label">
+        <item name="android:layout_margin">@dimen/margin_padding_size_medium</item>
+        <item name="android:fontFamily">@font/crimson_text_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 </resources>

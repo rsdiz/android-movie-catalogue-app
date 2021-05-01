@@ -4,16 +4,28 @@ import java.time.LocalDate
 
 data class MovieEntity(
     var movieId: Int,
-    var title: String,
+    override var title: String,
     var releaseDate: LocalDate,
-    var runtime: String,
-    var poster: Int,
-    var overview: String,
-    var status: String,
-    var originalLanguage: String,
-    var userScore: Int,
-    var genres: List<GenreEntity>,
-    var keywords: List<KeywordEntity>,
-    var credits: List<CreditEntity>,
-    var socialLinks: List<SocialLinkEntity>
+    override var runtime: String,
+    override var poster: Int,
+    override var overview: String,
+    override var status: String,
+    override var originalLanguage: String,
+    override var userScore: Int,
+    override var genres: List<GenreEntity>,
+    override var keywords: List<KeywordEntity>,
+    override var credits: List<CreditEntity>,
+    override var socialLinks: List<SocialLinkEntity>
+) : BaseEntity(
+    title,
+    runtime,
+    poster,
+    overview,
+    status,
+    originalLanguage,
+    userScore,
+    genres,
+    keywords,
+    credits,
+    socialLinks
 )

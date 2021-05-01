@@ -8,10 +8,12 @@ import com.bumptech.glide.request.RequestOptions
 import id.rosyid.moviecatalogue.R
 import id.rosyid.moviecatalogue.data.MovieEntity
 import id.rosyid.moviecatalogue.databinding.ItemsMoviesBinding
+import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
 import id.rosyid.moviecatalogue.utils.FormatPattern.DEFAULT_PATTERN
 import id.rosyid.moviecatalogue.utils.toStringWithPattern
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(private val callback: ItemsCallback) :
+    RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     private var listMovies = mutableListOf<MovieEntity>()
 
     fun setMovies(movies: List<MovieEntity>?) {
@@ -37,17 +39,18 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieEntity) {
             with(binding) {
-                tvTitle.text = movie.title
-                tvReleaseDate.text = movie.releaseDate.toStringWithPattern(DEFAULT_PATTERN)
-                tvOverview.text = movie.overview
-                val userScore = movie.userScore.div(10)
-                tvUserScoreNumber.text = userScore.toString()
-                rbUserScore.numStars = userScore
+                contentTitle.text = movie.title
+                contentReleaseDate.text = movie.releaseDate.toStringWithPattern(DEFAULT_PATTERN)
+                contentOverview.text = movie.overview
+                val userScore = movie.userScore.toFloat().div(10)
+                contentNumberUserScore.text = userScore.toString()
+                contentRbUserScore.rating = userScore
                 Glide.with(itemView.context)
                     .load(movie.poster)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_error)
-                    .into(ivPoster)
+                    .into(contentPoster)
+                itemContainer.setOnClickListener { callback.onClickListener(movie.movieId) }
             }
         }
     }

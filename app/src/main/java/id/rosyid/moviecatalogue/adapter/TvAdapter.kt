@@ -9,8 +9,10 @@ import com.bumptech.glide.request.RequestOptions
 import id.rosyid.moviecatalogue.R
 import id.rosyid.moviecatalogue.data.TvEntity
 import id.rosyid.moviecatalogue.databinding.ItemsMoviesBinding
+import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
 
-class TvAdapter : RecyclerView.Adapter<TvAdapter.ViewHolder>() {
+class TvAdapter(private val callback: ItemsCallback) :
+    RecyclerView.Adapter<TvAdapter.ViewHolder>() {
     private var listTvSeries = mutableListOf<TvEntity>()
 
     fun setTvSeries(tvSeries: List<TvEntity>?) {
@@ -36,17 +38,18 @@ class TvAdapter : RecyclerView.Adapter<TvAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tvSeries: TvEntity) {
             with(binding) {
-                tvTitle.text = tvSeries.title
-                tvReleaseDate.visibility = View.GONE
-                tvOverview.text = tvSeries.overview
-                val userScore = tvSeries.userScore.div(10)
-                tvUserScoreNumber.text = userScore.toString()
-                rbUserScore.numStars = userScore
+                contentTitle.text = tvSeries.title
+                contentReleaseDate.visibility = View.GONE
+                contentOverview.text = tvSeries.overview
+                val userScore = tvSeries.userScore.toFloat().div(10)
+                contentNumberUserScore.text = userScore.toString()
+                contentRbUserScore.rating = userScore
                 Glide.with(itemView.context)
                     .load(tvSeries.poster)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_error)
-                    .into(ivPoster)
+                    .into(contentPoster)
+                itemContainer.setOnClickListener { callback.onClickListener(tvSeries.tvId) }
             }
         }
     }

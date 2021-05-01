@@ -1,7 +1,7 @@
 package id.rosyid.moviecatalogue.utils
 
 import id.rosyid.moviecatalogue.R
-import id.rosyid.moviecatalogue.data.*
+import id.rosyid.moviecatalogue.data.MovieEntity
 import id.rosyid.moviecatalogue.utils.DataBuilder.buildCredits
 import id.rosyid.moviecatalogue.utils.DataBuilder.buildGenres
 import id.rosyid.moviecatalogue.utils.DataBuilder.buildKeywords
@@ -9,12 +9,14 @@ import id.rosyid.moviecatalogue.utils.DataBuilder.buildSocialLink
 import java.time.LocalDate
 
 object MoviesData {
+    private val listMovies = generateMovies()
+
     fun generateMovies(): List<MovieEntity> {
         return mutableListOf(
             MovieEntity(
                 1,
                 "A Star is Born",
-                LocalDate.parse("2018-10-3"),
+                LocalDate.parse("2018-10-03"),
                 "2h 16m",
                 R.drawable.poster_a_start_is_born,
                 "Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally's career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons.",
@@ -516,4 +518,7 @@ object MoviesData {
             )
         )
     }
+
+    fun getMovie(movieId: Int): MovieEntity =
+        listMovies[listMovies.binarySearch { compareValues(it.movieId, movieId) }]
 }

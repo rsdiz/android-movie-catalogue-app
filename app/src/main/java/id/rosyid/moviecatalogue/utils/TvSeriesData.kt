@@ -8,6 +8,8 @@ import id.rosyid.moviecatalogue.utils.DataBuilder.buildKeywords
 import id.rosyid.moviecatalogue.utils.DataBuilder.buildSocialLink
 
 object TvSeriesData {
+    private val listTvSeries = generateTvSeries()
+
     fun generateTvSeries(): List<TvEntity> {
         return mutableListOf(
             TvEntity(
@@ -340,4 +342,7 @@ object TvSeriesData {
             )
         )
     }
+
+    fun getTvSeries(tvId: Int): TvEntity =
+        listTvSeries[listTvSeries.binarySearch { compareValues(it.tvId, tvId) }]
 }
