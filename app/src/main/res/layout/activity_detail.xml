@@ -117,6 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_padding_size_medium"
+            android:nestedScrollingEnabled="false"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -174,6 +175,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_padding_size_medium"
+            android:nestedScrollingEnabled="false"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -190,6 +192,17 @@
             app:layout_constraintTop_toBottomOf="@+id/rv_credits"
             tools:layout_editor_absoluteX="8dp" />
 
+        <TextView
+            android:id="@+id/label_facts"
+            style="@style/TextAppearance.MovieCatalogue.Label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/facts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            tools:viewBindingIgnore="true" />
+
         <TableLayout
             android:id="@+id/facts_table"
             android:layout_width="0dp"
@@ -197,21 +210,22 @@
             android:layout_margin="@dimen/margin_padding_size_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_credits"
+            app:layout_constraintTop_toBottomOf="@+id/label_facts"
             tools:viewBindingIgnore="true">
 
             <TableRow android:weightSum="1">
 
                 <TextView
+                    android:id="@+id/label_duration"
                     style="@style/TextAppearance.MovieCatalogue.Facts.Label"
                     android:layout_height="wrap_content"
-                    tools:text="@string/duration" />
+                    android:text="@string/duration" />
 
                 <TextView
                     android:id="@+id/label_type"
                     style="@style/TextAppearance.MovieCatalogue.Facts.Label"
                     android:layout_height="wrap_content"
-                    tools:text="@string/type" />
+                    android:text="@string/type" />
 
             </TableRow>
 
@@ -236,12 +250,12 @@
                 <TextView
                     style="@style/TextAppearance.MovieCatalogue.Facts.Label"
                     android:layout_height="wrap_content"
-                    tools:text="@string/status" />
+                    android:text="@string/status" />
 
                 <TextView
                     style="@style/TextAppearance.MovieCatalogue.Facts.Label"
                     android:layout_height="wrap_content"
-                    tools:text="@string/original_language" />
+                    android:text="@string/original_language" />
 
             </TableRow>
 
@@ -286,9 +300,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_keywords"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_padding_size_medium"
-            android:minHeight="100dp"
+            android:minHeight="120dp"
             app:layoutManager="com.xiaofeng.flowlayoutmanager.FlowLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -23,4 +23,5 @@
     <string name="app_version">Version 1.0</string>
     <string name="credits" translatable="false">Credits</string>
     <string name="content_name">Content Name</string>
+    <string name="facts">Facts</string>
 </resources>

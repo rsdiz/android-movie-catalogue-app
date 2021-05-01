@@ -43,7 +43,7 @@ class TvAdapter(private val callback: ItemsCallback) :
                 contentOverview.text = tvSeries.overview
                 val userScore = tvSeries.userScore.toFloat().div(10)
                 contentNumberUserScore.text = userScore.toString()
-                contentRbUserScore.rating = userScore
+                contentRbUserScore.rating = userScore.div(2)
                 Glide.with(itemView.context)
                     .load(tvSeries.poster)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))

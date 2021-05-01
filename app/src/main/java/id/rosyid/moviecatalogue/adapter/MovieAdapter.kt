@@ -44,7 +44,7 @@ class MovieAdapter(private val callback: ItemsCallback) :
                 contentOverview.text = movie.overview
                 val userScore = movie.userScore.toFloat().div(10)
                 contentNumberUserScore.text = userScore.toString()
-                contentRbUserScore.rating = userScore
+                contentRbUserScore.rating = userScore.div(2)
                 Glide.with(itemView.context)
                     .load(movie.poster)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))

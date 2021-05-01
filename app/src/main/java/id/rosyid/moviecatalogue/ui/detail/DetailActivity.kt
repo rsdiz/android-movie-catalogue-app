@@ -3,6 +3,8 @@ package id.rosyid.moviecatalogue.ui.detail
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
+import android.widget.TableRow
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.palette.graphics.Palette
@@ -52,6 +54,11 @@ class DetailActivity : AppCompatActivity() {
                 contentReleaseDate.visibility = View.GONE
             } else if (type == TYPE_MOVIES) {
                 contentType.visibility = View.GONE
+                labelDuration.layoutParams = TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT,
+                    TableRow.LayoutParams.WRAP_CONTENT,
+                    1.0f
+                )
                 labelType.visibility = View.GONE
                 contentReleaseDate.text = (data as MovieEntity).releaseDate.toStringWithPattern(
                     FormatPattern.DEFAULT_PATTERN
