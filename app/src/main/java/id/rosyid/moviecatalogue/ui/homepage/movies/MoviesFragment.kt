@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import id.rosyid.moviecatalogue.R
 import id.rosyid.moviecatalogue.adapter.MovieAdapter
 import id.rosyid.moviecatalogue.databinding.FragmentMoviesBinding
 import id.rosyid.moviecatalogue.ui.detail.DetailActivity
@@ -28,6 +29,7 @@ class MoviesFragment : Fragment(), ItemsCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showLoading(true)
         if (activity != null) {
             val viewModel = ViewModelProvider(
                 this,
@@ -42,6 +44,38 @@ class MoviesFragment : Fragment(), ItemsCallback {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 adapter = movieAdapter
+            }
+
+            if (movieAdapter.itemCount > 0) showLoading(false)
+            else showMessage(true, resources.getString(R.string.data_empty))
+        }
+    }
+
+    private fun showLoading(state: Boolean) {
+        with(viewBinding) {
+            if (state) {
+                rvMovies.visibility = View.GONE
+                progressBar.visibility = View.VISIBLE
+                message.visibility = View.GONE
+            } else {
+                progressBar.visibility = View.GONE
+                rvMovies.visibility = View.VISIBLE
+                message.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun showMessage(state: Boolean, data: String) {
+        with(viewBinding) {
+            if (state) {
+                rvMovies.visibility = View.GONE
+                progressBar.visibility = View.GONE
+                message.visibility = View.VISIBLE
+                message.text = data
+            } else {
+                progressBar.visibility = View.VISIBLE
+                rvMovies.visibility = View.GONE
+                message.visibility = View.GONE
             }
         }
     }

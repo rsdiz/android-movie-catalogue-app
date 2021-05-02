@@ -26,4 +26,5 @@
     <string name="facts">Facts</string>
     <string name="detail_movie">Detail Movie</string>
     <string name="detail_tv_show">Detail TV Show</string>
+    <string name="data_empty">The data seems empty, please try again later!</string>
 </resources>
