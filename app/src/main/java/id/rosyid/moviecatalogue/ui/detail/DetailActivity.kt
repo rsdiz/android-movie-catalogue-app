@@ -41,6 +41,7 @@ class DetailActivity : AppCompatActivity() {
             val id = extras.getInt(EXTRA_DATA, -1)
             val type = extras.getString(EXTRA_TYPE, "")
             if (id != -1 && !type.isNullOrEmpty()) {
+                title = resources.getString(if (type == TYPE_MOVIES) R.string.detail_movie else R.string.detail_tv_show)
                 viewModel.setSelectedId(id, type)
                 val data: BaseEntity = viewModel.getItemDetail()
                 populateData(data, type)

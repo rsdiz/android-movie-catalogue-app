@@ -24,4 +24,6 @@
     <string name="credits" translatable="false">Credits</string>
     <string name="content_name">Content Name</string>
     <string name="facts">Facts</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="detail_tv_show">Detail TV Show</string>
 </resources>
