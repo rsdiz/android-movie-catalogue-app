@@ -8,7 +8,12 @@
         android:roundIcon="@mipmap/ic_movie_folder_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieCatalogue">
-        <activity android:name=".ui.detail.DetailActivity" />
+        <activity android:name=".ui.detail.DetailActivity"
+            android:parentActivityName=".ui.homepage.HomepageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="id.rosyid.moviecatalogue.ui.homepage.HomepageActivity" />
+        </activity>
         <activity android:name=".ui.homepage.HomepageActivity" />
         <activity
             android:name=".ui.splash.SplashActivity"

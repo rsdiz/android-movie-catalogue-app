@@ -70,6 +70,7 @@ class DetailActivity : AppCompatActivity() {
             Glide.with(baseContext)
                 .load(data.poster)
                 .into(contentPoster)
+            contentPoster.tag = data.poster
             val userScore = data.userScore.toFloat().div(10)
             contentRbUserScore.rating = userScore.div(2)
             contentNumberUserScore.text = userScore.toString()
