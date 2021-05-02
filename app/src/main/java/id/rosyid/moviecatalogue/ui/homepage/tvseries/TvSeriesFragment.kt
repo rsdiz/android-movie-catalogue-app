@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.rosyid.moviecatalogue.R
 import id.rosyid.moviecatalogue.adapter.TvAdapter
-import id.rosyid.moviecatalogue.data.TvEntity
 import id.rosyid.moviecatalogue.databinding.FragmentTvSeriesBinding
 import id.rosyid.moviecatalogue.ui.detail.DetailActivity
 import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
