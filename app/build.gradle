@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+def TMDB_API_KEY = '"' + TMDB_API_KEY + '"' ?: '"Define TMDB API Key"'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -15,6 +17,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "API_KEY", TMDB_API_KEY
     }
 
     buildTypes {
@@ -40,31 +43,30 @@ android {
 
 dependencies {
     // kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
-    implementation "androidx.core:core-ktx:${coreKtxVersion}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
     // ui
-    implementation "androidx.appcompat:appcompat:${appcompatVersion}"
-    implementation "com.google.android.material:material:${materialVersion}"
-    implementation "androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}"
-    implementation "androidx.recyclerview:recyclerview:${recyclerviewVersion}"
-    implementation "com.xiaofeng.android:flowlayoutmanager:${flowlayoutmanagerVersion}"
-    implementation "androidx.palette:palette-ktx:${palleteVersion}"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
+    implementation "androidx.palette:palette-ktx:$palleteVersion"
     // architecture component
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${androidLifecycleVersion}"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${androidLifecycleVersion}"
-    implementation "androidx.lifecycle:lifecycle-common-java8:${androidLifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$androidLifecycleVersion"
     // kotlin coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinxCoroutinesVersion}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinxCoroutinesVersion}"
-    implementation "androidx.legacy:legacy-support-v4:${legacySupportV4Version}"
+    implementation "androidx.legacy:legacy-support-v4:$legacySupportV4Version"
     // Image caching
-    implementation "com.github.bumptech.glide:glide:${glideVersion}"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
     // testing
-    testImplementation "junit:junit:${junitTestVersion}"
-    androidTestImplementation "androidx.test.ext:junit:${junitAndroidTestVersion}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${espressoVersion}"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:${espressoVersion}"
-    androidTestImplementation "androidx.test:rules:${rulesVersion}"
+    testImplementation "junit:junit:$junitTestVersion"
+    androidTestImplementation "androidx.test.ext:junit:$junitAndroidTestVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "androidx.test:rules:$rulesVersion"
     // mockito
-    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
 }
