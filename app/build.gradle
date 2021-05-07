@@ -1,9 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
-
-def TMDB_API_KEY = '"' + TMDB_API_KEY + '"' ?: '"Define TMDB API Key"'
 
 android {
     compileSdkVersion 30
@@ -17,7 +17,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "API_KEY", TMDB_API_KEY
+        buildConfigField "String", "API_KEY", '"' + TMDB_API_KEY + '"' ?: "Define TMDB API Key Here"
+
+        kapt{
+            arguments{
+                arg("room.schemaLocation","$projectDir/schemas".toString())
+                arg("room.incremental","true")
+                arg("room.expandProjection","true")
+            }
+        }
     }
 
     buildTypes {
@@ -53,14 +61,28 @@ dependencies {
     implementation "androidx.palette:palette-ktx:$palleteVersion"
     // architecture component
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-common-java8:$androidLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$androidLifecycleExtensionVersion"
     // kotlin coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinxCoroutinesVersion}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinxCoroutinesVersion}"
     implementation "androidx.legacy:legacy-support-v4:$legacySupportV4Version"
     // Image caching
     implementation "com.github.bumptech.glide:glide:$glideVersion"
+    // Retrofit + GSON
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    // Room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltLifecycleVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltCompilerVersion"
     // testing
     testImplementation "junit:junit:$junitTestVersion"
     androidTestImplementation "androidx.test.ext:junit:$junitAndroidTestVersion"
