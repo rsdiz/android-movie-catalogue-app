@@ -12,10 +12,10 @@ import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
 import id.rosyid.moviecatalogue.R
+import id.rosyid.moviecatalogue.data.MovieEntity
+import id.rosyid.moviecatalogue.data.TvEntity
 import id.rosyid.moviecatalogue.ui.splash.SplashActivity
 import id.rosyid.moviecatalogue.utils.FormatPattern
-import id.rosyid.moviecatalogue.utils.MoviesData
-import id.rosyid.moviecatalogue.utils.TvSeriesData
 import id.rosyid.moviecatalogue.utils.toStringWithPattern
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.equalTo
@@ -23,8 +23,8 @@ import org.junit.Before
 import org.junit.Test
 
 class HomepageActivityTest {
-    private val dummyMovies = MoviesData.generateMovies()
-    private val dummyTvSeries = TvSeriesData.generateTvSeries()
+    private val dummyMovies = listOf<MovieEntity>()
+    private val dummyTvSeries = listOf<TvEntity>()
 
     @Before
     fun setUp() {

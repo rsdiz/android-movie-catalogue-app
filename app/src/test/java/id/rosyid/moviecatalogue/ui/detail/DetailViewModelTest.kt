@@ -2,18 +2,15 @@ package id.rosyid.moviecatalogue.ui.detail
 
 import id.rosyid.moviecatalogue.data.MovieEntity
 import id.rosyid.moviecatalogue.data.TvEntity
-import id.rosyid.moviecatalogue.utils.MoviesData
-import id.rosyid.moviecatalogue.utils.TvSeriesData
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
-
 class DetailViewModelTest {
     private lateinit var detailViewModel: DetailViewModel
-    private val dummyMovies = MoviesData.getMovie(1)
+    private lateinit var dummyMovies: MovieEntity
     private val movieId = dummyMovies.movieId
-    private val dummyTvSeries = TvSeriesData.getTvSeries(1)
+    private lateinit var dummyTvSeries: TvEntity
     private val tvId = dummyTvSeries.tvId
 
     @Before

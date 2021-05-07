@@ -1,8 +1,8 @@
 package id.rosyid.moviecatalogue.ui.homepage.tvseries
 
 import androidx.lifecycle.ViewModel
-import id.rosyid.moviecatalogue.utils.TvSeriesData
+import id.rosyid.moviecatalogue.data.TvEntity
 
 class TvSeriesViewModel : ViewModel() {
-    fun getTvSeries() = TvSeriesData.generateTvSeries()
+    fun getTvSeries() = listOf<TvEntity>()
 }
