@@ -2,13 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.rosyid.moviecatalogue">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".MovieCatalogueApp"
         android:icon="@mipmap/ic_movie_folder"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_movie_folder_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieCatalogue">
-        <activity android:name=".ui.detail.DetailActivity"
+        <activity
+            android:name=".ui.detail.DetailActivity"
             android:parentActivityName=".ui.homepage.HomepageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
