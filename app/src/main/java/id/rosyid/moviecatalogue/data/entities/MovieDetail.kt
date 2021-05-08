@@ -1,13 +1,16 @@
 package id.rosyid.moviecatalogue.data.entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "movie_detail")
 data class MovieDetail(
     @SerializedName("backdrop_path")
     val backdropPath: String,
     val genres: List<Genre>,
     val homepage: String,
-    val id: Int,
+    @PrimaryKey val id: Int,
     val overview: String,
     @SerializedName("poster_path")
     val posterPath: String,

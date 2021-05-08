@@ -1,5 +1,7 @@
 package id.rosyid.moviecatalogue.data.entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class Tvs(
@@ -11,12 +13,13 @@ data class Tvs(
     val totalResults: Int
 )
 
+@Entity(tableName = "tvs")
 data class Tv(
     @SerializedName("backdrop_path")
     val backdropPath: String,
     @SerializedName("first_air_date")
     val firstAirDate: String,
-    val id: Int,
+    @PrimaryKey val id: Int,
     val name: String,
     val overview: String,
     @SerializedName("poster_path")
