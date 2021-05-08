@@ -1,19 +1,15 @@
 package id.rosyid.moviecatalogue.data.local
 
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import id.rosyid.moviecatalogue.data.entities.TvDetail
+import id.rosyid.moviecatalogue.data.local.base.IBaseDao
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface TvDetailDao {
+interface ITvDetailDao : IBaseDao<TvDetail> {
     @Query("SELECT * FROM tv_detail WHERE id = :id")
     fun getDetailById(id: Int): Flow<TvDetail>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertTvDetail(tvDetail: TvDetail)
 
     @Query("DELETE FROM tv_detail")
     fun deleteAll()

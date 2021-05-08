@@ -9,16 +9,21 @@ import id.rosyid.moviecatalogue.data.entities.Movies
 import id.rosyid.moviecatalogue.data.entities.TvDetail
 import id.rosyid.moviecatalogue.data.entities.Tvs
 
-@Database(entities = [Tvs::class, Movies::class, TvDetail::class, MovieDetail::class], version = 1, exportSchema = false)
+@Database(
+    entities = [Tvs::class, Movies::class, TvDetail::class, MovieDetail::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun tvsDao(): TvsDao
-    abstract fun tvDetailDao(): TvDetailDao
-    abstract fun moviesDao(): MoviesDao
-    abstract fun movieDetailDao(): MovieDetailDao
+    abstract fun tvsDao(): ITvsDao
+    abstract fun tvDetailDao(): ITvDetailDao
+    abstract fun moviesDao(): IMoviesDao
+    abstract fun movieDetailDao(): IMovieDetailDao
 
     companion object {
-        @Volatile private var instance: AppDatabase? = null
+        @Volatile
+        private var instance: AppDatabase? = null
 
         fun getDatabase(context: Context): AppDatabase =
             instance ?: synchronized(this) {
