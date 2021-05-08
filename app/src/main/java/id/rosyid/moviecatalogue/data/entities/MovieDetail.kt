@@ -7,13 +7,13 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "movie_detail")
 data class MovieDetail(
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     val genres: List<Genre>,
     val homepage: String,
     @PrimaryKey val id: Int,
     val overview: String,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @SerializedName("release_date")
     val releaseDate: String,
     val runtime: Int,

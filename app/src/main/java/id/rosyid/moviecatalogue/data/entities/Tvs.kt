@@ -16,14 +16,14 @@ data class Tvs(
 @Entity(tableName = "tvs")
 data class Tv(
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @SerializedName("first_air_date")
     val firstAirDate: String,
     @PrimaryKey val id: Int,
     val name: String,
     val overview: String,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("vote_count")

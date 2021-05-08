@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "tv_detail")
 data class TvDetail(
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @SerializedName("episode_run_time")
     val episodeRunTime: List<Int>,
     @SerializedName("first_air_date")
@@ -20,7 +20,7 @@ data class TvDetail(
     val numberOfSeasons: Int,
     val overview: String,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     val status: String,
     val tagline: String,
     @SerializedName("vote_average")

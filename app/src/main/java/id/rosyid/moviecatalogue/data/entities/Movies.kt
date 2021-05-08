@@ -16,11 +16,11 @@ data class Movies(
 @Entity(tableName = "movies")
 data class Movie(
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @PrimaryKey val id: Int,
     val overview: String,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @SerializedName("release_date")
     val releaseDate: String,
     val title: String,
