@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <View
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/banner_color"
             android:layout_width="0dp"
             android:layout_height="@dimen/image_height"
@@ -100,18 +100,39 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_genre"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_padding_size_small"
             android:layout_marginBottom="131dp"
-            app:layoutManager="com.xiaofeng.flowlayoutmanager.FlowLayoutManager"
-            app:layout_constraintBottom_toBottomOf="@+id/content_poster"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/content_poster"
             app:layout_constraintTop_toBottomOf="@+id/banner_color"
             app:layout_constraintVertical_bias="0.0"
-            tools:itemCount="6"
+            tools:itemCount="1"
             tools:listitem="@layout/items_text_list" />
+
+        <TextView
+            android:id="@+id/content_tagline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_medium"
+            android:fontFamily="@font/lato"
+            android:textAlignment="center"
+            android:textColor="?attr/colorOnBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/content_poster"
+            tools:text="@string/tagline" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:background="@color/placeholder"
+            app:layout_constraintTop_toBottomOf="@+id/content_overview"
+            tools:layout_editor_absoluteX="8dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_social_link"
@@ -122,7 +143,7 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/content_poster"
+            app:layout_constraintTop_toBottomOf="@+id/view"
             app:spanCount="5"
             tools:itemCount="5"
             tools:listitem="@layout/items_social_link" />
@@ -135,7 +156,7 @@
             android:text="@string/overview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_social_link"
+            app:layout_constraintTop_toBottomOf="@+id/content_tagline"
             tools:viewBindingIgnore="true" />
 
         <TextView
@@ -150,167 +171,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_overview"
             tools:text="@string/overview" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="@dimen/margin_padding_size_small"
-            android:background="@color/placeholder"
-            app:layout_constraintTop_toBottomOf="@+id/content_overview"
-            tools:layout_editor_absoluteX="8dp" />
-
-        <TextView
-            android:id="@+id/label_credits"
-            style="@style/TextAppearance.MovieCatalogue.Label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/credits"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/content_overview"
-            tools:viewBindingIgnore="true" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_credits"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_padding_size_medium"
-            android:nestedScrollingEnabled="false"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_credits"
-            tools:itemCount="2"
-            tools:listitem="@layout/items_credits" />
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="@dimen/margin_padding_size_small"
-            android:background="@color/placeholder"
-            app:layout_constraintTop_toBottomOf="@+id/rv_credits"
-            tools:layout_editor_absoluteX="8dp" />
-
-        <TextView
-            android:id="@+id/label_facts"
-            style="@style/TextAppearance.MovieCatalogue.Label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/facts"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2"
-            tools:viewBindingIgnore="true" />
-
-        <TableLayout
-            android:id="@+id/facts_table"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_padding_size_medium"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_facts"
-            tools:viewBindingIgnore="true">
-
-            <TableRow android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/label_duration"
-                    style="@style/TextAppearance.MovieCatalogue.Facts.Label"
-                    android:layout_height="wrap_content"
-                    android:text="@string/duration" />
-
-                <TextView
-                    android:id="@+id/label_type"
-                    style="@style/TextAppearance.MovieCatalogue.Facts.Label"
-                    android:layout_height="wrap_content"
-                    android:text="@string/type" />
-
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/content_duration"
-                    style="@style/TextAppearance.MovieCatalogue.Facts.Content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/duration" />
-
-                <TextView
-                    android:id="@+id/content_type"
-                    style="@style/TextAppearance.MovieCatalogue.Facts.Content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/type" />
-
-            </TableRow>
-
-            <TableRow android:weightSum="1">
-
-                <TextView
-                    style="@style/TextAppearance.MovieCatalogue.Facts.Label"
-                    android:layout_height="wrap_content"
-                    android:text="@string/status" />
-
-                <TextView
-                    style="@style/TextAppearance.MovieCatalogue.Facts.Label"
-                    android:layout_height="wrap_content"
-                    android:text="@string/original_language" />
-
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/content_status"
-                    style="@style/TextAppearance.MovieCatalogue.Facts.Content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/status" />
-
-                <TextView
-                    android:id="@+id/content_original_language"
-                    style="@style/TextAppearance.MovieCatalogue.Facts.Content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/original_language" />
-
-            </TableRow>
-
-        </TableLayout>
-
-        <View
-            android:id="@+id/view3"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="@dimen/margin_padding_size_small"
-            android:background="@color/placeholder"
-            app:layout_constraintTop_toBottomOf="@+id/facts_table"
-            tools:layout_editor_absoluteX="8dp" />
-
-        <TextView
-            android:id="@+id/label_keywords"
-            style="@style/TextAppearance.MovieCatalogue.Label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/keywords"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/facts_table"
-            tools:viewBindingIgnore="true" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_keywords"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_padding_size_medium"
-            android:minHeight="120dp"
-            app:layoutManager="com.xiaofeng.flowlayoutmanager.FlowLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_keywords"
-            tools:itemCount="5"
-            tools:listitem="@layout/items_text_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
