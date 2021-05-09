@@ -15,6 +15,7 @@ import id.rosyid.moviecatalogue.ui.detail.DetailActivity
 import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
 import id.rosyid.moviecatalogue.utils.autoCleared
 
+@AndroidEntryPoint
 class TvSeriesFragment : Fragment(), ItemsCallback {
     private var viewBinding: FragmentTvSeriesBinding by autoCleared()
 

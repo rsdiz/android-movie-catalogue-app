@@ -1,9 +1,10 @@
 package id.rosyid.moviecatalogue.ui.splash
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
 import id.rosyid.moviecatalogue.databinding.ActivitySplashBinding
 import id.rosyid.moviecatalogue.ui.homepage.HomepageActivity
 import id.rosyid.moviecatalogue.utils.Fullscreen
@@ -12,6 +13,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivitySplashBinding
 

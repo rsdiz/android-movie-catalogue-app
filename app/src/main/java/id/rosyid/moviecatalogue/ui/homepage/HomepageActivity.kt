@@ -2,8 +2,10 @@ package id.rosyid.moviecatalogue.ui.homepage
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import id.rosyid.moviecatalogue.databinding.ActivityHomepageBinding
 
+@AndroidEntryPoint
 class HomepageActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityHomepageBinding

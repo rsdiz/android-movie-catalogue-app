@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import id.rosyid.moviecatalogue.R
 import id.rosyid.moviecatalogue.adapter.CreditsAdapter
 import id.rosyid.moviecatalogue.adapter.ListTextAdapter
@@ -23,6 +24,7 @@ import id.rosyid.moviecatalogue.databinding.ActivityDetailBinding
 import id.rosyid.moviecatalogue.utils.FormatPattern
 import id.rosyid.moviecatalogue.utils.toStringWithPattern
 
+@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityDetailBinding
 

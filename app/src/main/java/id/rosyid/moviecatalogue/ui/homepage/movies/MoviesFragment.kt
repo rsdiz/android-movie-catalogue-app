@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import id.rosyid.moviecatalogue.R
 import id.rosyid.moviecatalogue.adapter.MovieAdapter
 import id.rosyid.moviecatalogue.databinding.FragmentMoviesBinding
@@ -15,6 +16,7 @@ import id.rosyid.moviecatalogue.ui.detail.DetailActivity
 import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
 import id.rosyid.moviecatalogue.utils.autoCleared
 
+@AndroidEntryPoint
 class MoviesFragment : Fragment(), ItemsCallback {
     private var viewBinding: FragmentMoviesBinding by autoCleared()
 
