@@ -59,6 +59,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
     implementation "androidx.palette:palette-ktx:$palleteVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
     // architecture component
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidLifecycleVersion"

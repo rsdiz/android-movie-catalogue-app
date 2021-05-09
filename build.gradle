@@ -21,6 +21,7 @@ ext {
     hiltVersion = '2.33-beta'
     hiltLifecycleVersion = '1.0.0-alpha03'
     hiltCompilerVersion = '1.0.0'
+    fragmentVersion = '1.3.3'
 }
 buildscript {
     ext{
