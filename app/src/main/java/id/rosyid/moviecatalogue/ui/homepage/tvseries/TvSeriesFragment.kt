@@ -6,18 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import id.rosyid.moviecatalogue.R
 import id.rosyid.moviecatalogue.adapter.TvAdapter
 import id.rosyid.moviecatalogue.databinding.FragmentTvSeriesBinding
 import id.rosyid.moviecatalogue.ui.detail.DetailActivity
 import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
+import id.rosyid.moviecatalogue.utils.Resource
 import id.rosyid.moviecatalogue.utils.autoCleared
 
 @AndroidEntryPoint
 class TvSeriesFragment : Fragment(), ItemsCallback {
     private var viewBinding: FragmentTvSeriesBinding by autoCleared()
+    private val viewModel: TvSeriesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,23 +35,33 @@ class TvSeriesFragment : Fragment(), ItemsCallback {
         super.onViewCreated(view, savedInstanceState)
         showLoading(true)
         if (activity != null) {
-            val viewModel = ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            )[TvSeriesViewModel::class.java]
-            val tvSeries = viewModel.getTvSeries()
+            viewModel.listTvs.observe(
+                viewLifecycleOwner,
+                { result ->
+                    when (result.status) {
+                        Resource.Status.LOADING -> {
+                            showLoading(true)
+                        }
+                        Resource.Status.SUCCESS -> {
+                            showLoading(false)
+                            if (result.data != null) {
+                                val tvSeries = result.data
+                                val tvAdapter = TvAdapter(this)
+                                tvAdapter.setTvSeries(tvSeries)
 
-            val tvAdapter = TvAdapter(this)
-            tvAdapter.setTvSeries(tvSeries)
-
-            with(viewBinding.rvTvSeries) {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = tvAdapter
-            }
-
-            if (tvAdapter.itemCount > 0) showLoading(false)
-            else showMessage(true, resources.getString(R.string.data_empty))
+                                with(viewBinding.rvTvSeries) {
+                                    layoutManager = LinearLayoutManager(context)
+                                    setHasFixedSize(true)
+                                    adapter = tvAdapter
+                                }
+                            } else showMessage(true, resources.getString(R.string.data_empty))
+                        }
+                        Resource.Status.ERROR -> {
+                            showMessage(true, result.message.toString())
+                        }
+                    }
+                }
+            )
         }
     }
 
