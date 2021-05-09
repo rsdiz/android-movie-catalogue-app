@@ -6,17 +6,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import id.rosyid.moviecatalogue.R
-import id.rosyid.moviecatalogue.data.MovieEntity
+import id.rosyid.moviecatalogue.data.entities.Movie
+import id.rosyid.moviecatalogue.data.remote.api.TMdbService.Companion.IMAGE_BASE_URL
 import id.rosyid.moviecatalogue.databinding.ItemsMoviesBinding
 import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
 import id.rosyid.moviecatalogue.utils.FormatPattern.DEFAULT_PATTERN
+import id.rosyid.moviecatalogue.utils.ImageConfiguration.POSTER_SIZE
 import id.rosyid.moviecatalogue.utils.toStringWithPattern
+import java.time.LocalDate
 
 class MovieAdapter(private val callback: ItemsCallback) :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
-    private var listMovies = mutableListOf<MovieEntity>()
+    private var listMovies = mutableListOf<Movie>()
 
-    fun setMovies(movies: List<MovieEntity>?) {
+    fun setMovies(movies: List<Movie>?) {
         if (movies == null) return
         listMovies.clear()
         listMovies.addAll(movies)
@@ -37,20 +40,24 @@ class MovieAdapter(private val callback: ItemsCallback) :
 
     inner class ViewHolder(private val binding: ItemsMoviesBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: MovieEntity) {
+        fun bind(movie: Movie) {
             with(binding) {
                 contentTitle.text = movie.title
-                contentReleaseDate.text = movie.releaseDate.toStringWithPattern(DEFAULT_PATTERN)
+                contentReleaseDate.text =
+                    LocalDate.parse(movie.releaseDate).toStringWithPattern(DEFAULT_PATTERN)
                 contentOverview.text = movie.overview
-                val userScore = movie.userScore.toFloat().div(10)
+                val userScore = movie.voteAverage.toFloat()
                 contentNumberUserScore.text = userScore.toString()
                 contentRbUserScore.rating = userScore.div(2)
                 Glide.with(itemView.context)
-                    .load(movie.poster)
+                    .load(
+                        StringBuilder(IMAGE_BASE_URL).append(POSTER_SIZE[4])
+                            .append(movie.posterPath)
+                    )
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_error)
                     .into(contentPoster)
-                itemContainer.setOnClickListener { callback.onClickListener(movie.movieId) }
+                itemContainer.setOnClickListener { callback.onClickListener(movie.id) }
             }
         }
     }

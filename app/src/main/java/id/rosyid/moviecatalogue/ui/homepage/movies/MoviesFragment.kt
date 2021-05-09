@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.rosyid.moviecatalogue.R
@@ -14,11 +14,13 @@ import id.rosyid.moviecatalogue.adapter.MovieAdapter
 import id.rosyid.moviecatalogue.databinding.FragmentMoviesBinding
 import id.rosyid.moviecatalogue.ui.detail.DetailActivity
 import id.rosyid.moviecatalogue.ui.homepage.ItemsCallback
+import id.rosyid.moviecatalogue.utils.Resource
 import id.rosyid.moviecatalogue.utils.autoCleared
 
 @AndroidEntryPoint
 class MoviesFragment : Fragment(), ItemsCallback {
     private var viewBinding: FragmentMoviesBinding by autoCleared()
+    private val viewModel: MoviesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,25 +33,34 @@ class MoviesFragment : Fragment(), ItemsCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showLoading(true)
         if (activity != null) {
-            val viewModel = ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            )[MoviesViewModel::class.java]
-            val movies = viewModel.getMovies()
+            viewModel.listMovies.observe(
+                viewLifecycleOwner,
+                { listMovies ->
+                    when (listMovies.status) {
+                        Resource.Status.LOADING -> {
+                            showLoading(true)
+                        }
+                        Resource.Status.SUCCESS -> {
+                            showLoading(false)
+                            if (listMovies.data != null) {
+                                val movies = listMovies.data
+                                val movieAdapter = MovieAdapter(this)
+                                movieAdapter.setMovies(movies)
 
-            val movieAdapter = MovieAdapter(this)
-            movieAdapter.setMovies(movies)
-
-            with(viewBinding.rvMovies) {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = movieAdapter
-            }
-
-            if (movieAdapter.itemCount > 0) showLoading(false)
-            else showMessage(true, resources.getString(R.string.data_empty))
+                                with(viewBinding.rvMovies) {
+                                    layoutManager = LinearLayoutManager(context)
+                                    setHasFixedSize(true)
+                                    adapter = movieAdapter
+                                }
+                            } else showMessage(true, resources.getString(R.string.data_empty))
+                        }
+                        Resource.Status.ERROR -> {
+                            showMessage(true, listMovies?.message.toString())
+                        }
+                    }
+                }
+            )
         }
     }
 
