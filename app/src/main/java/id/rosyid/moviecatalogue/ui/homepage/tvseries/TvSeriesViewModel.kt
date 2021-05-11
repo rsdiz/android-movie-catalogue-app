@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TvSeriesViewModel @Inject constructor(
-    private val tvRepository: TvRepository
+    tvRepository: TvRepository
 ) : ViewModel() {
     private val _listTvs = tvRepository.getAllTvs() as MutableLiveData<Resource<List<Tv>>>
     val listTvs: LiveData<Resource<List<Tv>>> = _listTvs
