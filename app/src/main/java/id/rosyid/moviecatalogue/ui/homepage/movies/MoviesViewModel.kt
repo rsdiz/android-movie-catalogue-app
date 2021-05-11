@@ -11,14 +11,6 @@ import javax.inject.Inject
 class MoviesViewModel @Inject constructor(
     private val moviesRepository: MoviesRepository
 ) : ViewModel() {
-    private val _listMovies = MutableLiveData<Resource<List<Movie>>>()
+    private val _listMovies = moviesRepository.getAllMovies() as MutableLiveData<Resource<List<Movie>>>
     val listMovies: LiveData<Resource<List<Movie>>> = _listMovies
-
-    fun getMovies() {
-        _listMovies.value = moviesRepository.getAllMovies().value
-    }
-
-    init {
-        getMovies()
-    }
 }
