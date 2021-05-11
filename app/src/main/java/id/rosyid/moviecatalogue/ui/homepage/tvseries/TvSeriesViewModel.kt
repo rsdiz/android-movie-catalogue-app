@@ -13,14 +13,6 @@ import javax.inject.Inject
 class TvSeriesViewModel @Inject constructor(
     private val tvRepository: TvRepository
 ) : ViewModel() {
-    private val _listTvs = MutableLiveData<Resource<List<Tv>>>()
+    private val _listTvs = tvRepository.getAllTvs() as MutableLiveData<Resource<List<Tv>>>
     val listTvs: LiveData<Resource<List<Tv>>> = _listTvs
-
-    private fun getTvs() {
-        _listTvs.value = tvRepository.getAllTvs().value
-    }
-
-    init {
-        getTvs()
-    }
 }
