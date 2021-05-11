@@ -4,16 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import id.rosyid.moviecatalogue.data.entities.MovieDetail
-import id.rosyid.moviecatalogue.data.entities.Movies
-import id.rosyid.moviecatalogue.data.entities.TvDetail
-import id.rosyid.moviecatalogue.data.entities.Tvs
+import androidx.room.TypeConverters
+import id.rosyid.moviecatalogue.data.entities.*
+import id.rosyid.moviecatalogue.utils.GenreConverter
+import id.rosyid.moviecatalogue.utils.IntConverter
 
 @Database(
-    entities = [Tvs::class, Movies::class, TvDetail::class, MovieDetail::class],
+    entities = [Tv::class, Movie::class, TvDetail::class, MovieDetail::class],
     version = 1,
     exportSchema = false
 )
+@TypeConverters(GenreConverter::class, IntConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun tvsDao(): ITvsDao
