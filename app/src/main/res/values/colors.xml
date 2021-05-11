@@ -12,5 +12,6 @@
     <color name="thunderbird">#FFCE1212</color>
     <color name="white_rock">#FFEEEBDD</color>
     <color name="placeholder">#6FB6B6B6</color>
-    <color name="rating_placeholder">#9FFFFFFF</color>
+    <color name="rating_placeholder">#CD350000</color>
+    <color name="golden">#FFD700</color>
 </resources>

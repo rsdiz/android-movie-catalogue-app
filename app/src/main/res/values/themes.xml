@@ -47,4 +47,9 @@
         <item name="android:textColor">?colorPrimary</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
+
+    <style name="RatingBar.Golden" parent="Theme.MovieCatalogue">
+        <item name="colorControlNormal">@color/white_rock</item>
+        <item name="colorControlActivated">@color/golden</item>
+    </style>
 </resources>
