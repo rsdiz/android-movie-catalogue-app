@@ -35,17 +35,16 @@ class TvSeriesFragment : Fragment(), ItemsCallback {
         super.onViewCreated(view, savedInstanceState)
         showLoading(true)
         if (activity != null) {
-            viewModel.listTvs.observe(
-                viewLifecycleOwner,
-                { result ->
-                    when (result.status) {
+            viewModel.listTvs.observe(viewLifecycleOwner) { resource ->
+                if (resource != null)
+                    when (resource.status) {
                         Resource.Status.LOADING -> {
                             showLoading(true)
                         }
                         Resource.Status.SUCCESS -> {
                             showLoading(false)
-                            if (result.data != null) {
-                                val tvSeries = result.data
+                            if (resource.data != null) {
+                                val tvSeries = resource.data
                                 val tvAdapter = TvAdapter(this)
                                 tvAdapter.setTvSeries(tvSeries)
 
@@ -57,11 +56,10 @@ class TvSeriesFragment : Fragment(), ItemsCallback {
                             } else showMessage(true, resources.getString(R.string.data_empty))
                         }
                         Resource.Status.ERROR -> {
-                            showMessage(true, result.message.toString())
+                            showMessage(true, resource.message.toString())
                         }
                     }
-                }
-            )
+            }
         }
     }
 
