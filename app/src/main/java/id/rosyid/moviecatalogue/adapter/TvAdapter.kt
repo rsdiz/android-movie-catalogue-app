@@ -1,5 +1,6 @@
 package id.rosyid.moviecatalogue.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -51,8 +52,10 @@ class TvAdapter(private val callback: ItemsCallback) :
                 contentRbUserScore.rating = userScore.div(2)
                 Glide.with(itemView.context)
                     .load(
-                        StringBuilder(TMdbService.IMAGE_BASE_URL).append(ImageConfiguration.POSTER_SIZE[4])
-                            .append(tvSeries.posterPath)
+                        Uri.parse(
+                            StringBuilder(TMdbService.IMAGE_BASE_URL).append(ImageConfiguration.POSTER_SIZE[4])
+                                .append(tvSeries.posterPath).toString()
+                        )
                     )
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_error)

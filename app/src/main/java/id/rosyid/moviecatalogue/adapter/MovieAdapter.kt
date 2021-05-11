@@ -1,5 +1,6 @@
 package id.rosyid.moviecatalogue.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -51,8 +52,10 @@ class MovieAdapter(private val callback: ItemsCallback) :
                 contentRbUserScore.rating = userScore.div(2)
                 Glide.with(itemView.context)
                     .load(
-                        StringBuilder(IMAGE_BASE_URL).append(POSTER_SIZE[4])
-                            .append(movie.posterPath)
+                        Uri.parse(
+                            StringBuilder(IMAGE_BASE_URL).append(POSTER_SIZE[4])
+                                .append(movie.posterPath).toString()
+                        )
                     )
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_error)
