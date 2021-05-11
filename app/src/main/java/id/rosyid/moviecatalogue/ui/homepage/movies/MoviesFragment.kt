@@ -33,18 +33,18 @@ class MoviesFragment : Fragment(), ItemsCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showLoading(true)
         if (activity != null) {
-            viewModel.listMovies.observe(
-                viewLifecycleOwner,
-                { listMovies ->
-                    when (listMovies.status) {
+            viewModel.listMovies.observe(viewLifecycleOwner) { resource ->
+                if (resource != null)
+                    when (resource.status) {
                         Resource.Status.LOADING -> {
                             showLoading(true)
                         }
                         Resource.Status.SUCCESS -> {
                             showLoading(false)
-                            if (listMovies.data != null) {
-                                val movies = listMovies.data
+                            if (resource.data != null) {
+                                val movies = resource.data
                                 val movieAdapter = MovieAdapter(this)
                                 movieAdapter.setMovies(movies)
 
@@ -56,11 +56,10 @@ class MoviesFragment : Fragment(), ItemsCallback {
                             } else showMessage(true, resources.getString(R.string.data_empty))
                         }
                         Resource.Status.ERROR -> {
-                            showMessage(true, listMovies?.message.toString())
+                            showMessage(true, resource?.message.toString())
                         }
                     }
-                }
-            )
+            }
         }
     }
 
