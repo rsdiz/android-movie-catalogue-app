@@ -7,23 +7,23 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "id.rosyid.moviecatalogue"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_KEY", '"' + TMDB_API_KEY + '"' ?: "Define TMDB API Key Here"
 
-        kapt{
-            arguments{
-                arg("room.schemaLocation","$projectDir/schemas".toString())
-                arg("room.incremental","true")
-                arg("room.expandProjection","true")
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas".toString())
+                arg("room.incremental", "true")
+                arg("room.expandProjection", "true")
             }
         }
     }
@@ -46,6 +46,10 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 }
 
@@ -92,7 +96,11 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
     androidTestImplementation "androidx.test:rules:$rulesVersion"
     testImplementation "androidx.arch.core:core-testing:$androidCoreTestVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$androidCoreTestVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
+    implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
     // mockito
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
 }
