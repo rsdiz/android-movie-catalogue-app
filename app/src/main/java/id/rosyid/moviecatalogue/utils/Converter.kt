@@ -25,7 +25,7 @@ class IntConverter {
     private var gson = Gson()
 
     @TypeConverter
-    fun IntegerItemToString(genreItems: List<Int>): String {
+    fun integerItemToString(genreItems: List<Int>): String {
         return gson.toJson(genreItems)
     }
 
