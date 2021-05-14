@@ -22,24 +22,6 @@
     <!-- Component Style. -->
     <style name="TextAppearance.MovieCatalogue" parent="" />
 
-    <style name="TextAppearance.MovieCatalogue.Facts" parent="TextAppearance.AppCompat" />
-
-    <style name="TextAppearance.MovieCatalogue.Facts.Label">
-        <item name="android:padding">@dimen/margin_padding_size_small</item>
-        <item name="android:textColor">?colorSecondary</item>
-        <item name="android:fontFamily">@font/lato</item>
-        <item name="android:layout_weight">.5</item>
-        <item name="android:textAlignment">center</item>
-    </style>
-
-    <style name="TextAppearance.MovieCatalogue.Facts.Content">
-        <item name="android:padding">@dimen/margin_padding_size_small</item>
-        <item name="android:textColor">?colorOnSecondary</item>
-        <item name="android:fontFamily">@font/lato</item>
-        <item name="android:layout_weight">.5</item>
-        <item name="android:textAlignment">center</item>
-    </style>
-
     <style name="TextAppearance.MovieCatalogue.Label">
         <item name="android:layout_margin">@dimen/margin_padding_size_medium</item>
         <item name="android:fontFamily">@font/crimson_text_bold</item>
