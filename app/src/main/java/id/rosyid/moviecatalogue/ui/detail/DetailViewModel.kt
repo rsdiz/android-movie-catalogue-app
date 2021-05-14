@@ -20,11 +20,11 @@ class DetailViewModel @Inject constructor(
 ) : ViewModel() {
     private var id: Int = -1
 
-    private lateinit var _tvDetail: MutableLiveData<Resource<TvDetail>>
+    private var _tvDetail = MutableLiveData<Resource<TvDetail>>()
     val tvDetail: LiveData<Resource<TvDetail>>
         get() = _tvDetail
 
-    private lateinit var _movieDetail: MutableLiveData<Resource<MovieDetail>>
+    private var _movieDetail = MutableLiveData<Resource<MovieDetail>>()
     val movieDetail: LiveData<Resource<MovieDetail>>
         get() = _movieDetail
 
