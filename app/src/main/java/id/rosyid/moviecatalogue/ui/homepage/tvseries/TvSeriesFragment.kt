@@ -27,6 +27,7 @@ class TvSeriesFragment : Fragment(), ItemsCallback {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel.setUp()
         viewBinding = FragmentTvSeriesBinding.inflate(inflater, container, false)
         return viewBinding.root
     }
