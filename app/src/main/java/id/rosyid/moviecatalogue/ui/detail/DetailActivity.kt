@@ -145,21 +145,6 @@ class DetailActivity : AppCompatActivity() {
             contentOverview.text = data.overview
             contentTagline.text = data.tagline
             contentReleaseDate.text = data.date
-            // setup color content
-//            val palette =
-//                Palette.Builder((contentPoster.drawable as BitmapDrawable).bitmap).generate()
-//            bannerColor.setBackgroundColor(
-//                palette.darkVibrantSwatch?.rgb ?: palette.darkMutedSwatch?.rgb
-//                    ?: ContextCompat.getColor(baseContext, R.color.cod_gray)
-//            )
-//            contentTitle.setTextColor(
-//                palette.lightVibrantSwatch?.rgb ?: palette.lightMutedSwatch?.rgb
-//                    ?: ContextCompat.getColor(baseContext, R.color.white)
-//            )
-//            contentReleaseDate.setTextColor(
-//                palette.vibrantSwatch?.rgb ?: palette.mutedSwatch?.rgb
-//                    ?: ContextCompat.getColor(baseContext, R.color.white)
-//            )
             // setup recycler view
             val genreAdapter = ListTextAdapter()
             val listGenre = mutableListOf<String>()
