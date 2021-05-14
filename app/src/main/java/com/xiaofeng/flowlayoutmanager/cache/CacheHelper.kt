@@ -2,6 +2,8 @@ package com.xiaofeng.flowlayoutmanager.cache
 
 import android.graphics.Point
 import android.util.SparseArray
+import kotlin.math.abs
+import kotlin.math.min
 
 /**
  * A Helper class that will save Line information (items count, total width etc.) and will be used
@@ -111,13 +113,13 @@ class CacheHelper(
         if (!valid()) {
             return
         }
-        invalidateLineMapAfter(Math.min(from, to))
+        invalidateLineMapAfter(min(from, to))
         val itemsToMove = arrayOfNulls<Point>(count)
         for (i in from until from + count) {
             itemsToMove[i - from] = sizeMap[i]
         }
         val movingForward = from - to > 0
-        var itemsToShift = Math.abs(from - to)
+        var itemsToShift = abs(from - to)
         if (!movingForward) {
             itemsToShift -= count
         }
