@@ -27,6 +27,7 @@ class MoviesFragment : Fragment(), ItemsCallback {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel.setUp()
         viewBinding = FragmentMoviesBinding.inflate(inflater, container, false)
         return viewBinding.root
     }
@@ -56,7 +57,7 @@ class MoviesFragment : Fragment(), ItemsCallback {
                             } else showMessage(true, resources.getString(R.string.data_empty))
                         }
                         Resource.Status.ERROR -> {
-                            showMessage(true, resource?.message.toString())
+                            showMessage(true, resource.message.toString())
                         }
                     }
             }

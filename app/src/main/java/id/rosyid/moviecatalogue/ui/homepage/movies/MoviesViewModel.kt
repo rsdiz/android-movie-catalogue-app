@@ -11,8 +11,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
-    moviesRepository: MoviesRepository
+    private val moviesRepository: MoviesRepository
 ) : ViewModel() {
-    private val _listMovies = moviesRepository.getAllMovies() as MutableLiveData<Resource<List<Movie>>>
-    val listMovies: LiveData<Resource<List<Movie>>> = _listMovies
+    private var _listMovies = MutableLiveData<Resource<List<Movie>>>()
+    val listMovies: LiveData<Resource<List<Movie>>>
+        get() = _listMovies
+
+    fun setUp() {
+        _listMovies = moviesRepository.getAllMovies() as MutableLiveData<Resource<List<Movie>>>
+    }
 }
